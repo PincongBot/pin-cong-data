@@ -5,7 +5,7 @@ GIT_NAME = "pin-cong"
 GIT_EMAIL = "pin-cong@github.com"
 
 def check_destination
-  unless Dir.exist? "/home/travis/data"
+  unless Dir.exist? "/home/travis/data/.git"
     sh "git clone --depth=1 git@github.com:PincongBot/pin-cong-data.git /home/travis/data"
   end
   Dir.chdir("/home/travis/data") { sh "git pull" }
