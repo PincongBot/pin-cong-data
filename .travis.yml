@@ -1,0 +1,27 @@
+
+language: ruby
+
+branches:
+  except:
+    - master
+
+git:
+  depth: 1
+
+cache:
+  timeout: 1000
+  bundler: true
+  directories:
+    - $HOME/data/
+
+before_install:
+  - eval "$(ssh-agent -s)"
+  - openssl aes-256-cbc -K $encrypted_eb47da388f9d_key -iv $encrypted_eb47da388f9d_iv -in id_rsa.enc -out $HOME/.ssh/id_rsa -d
+  - chmod 600 $HOME/.ssh/id_rsa
+  - ssh-add $HOME/.ssh/id_rsa
+
+install:
+  - bundle install
+
+script:
+  - bundle exec rake main --quiet
