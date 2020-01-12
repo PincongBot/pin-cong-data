@@ -43,7 +43,7 @@ task :main do
     check_destination
 
     Dir.chdir("/home/travis/data") {
-      sh "wget -O pink.sql https://github.com/pin-cong/data/raw/master/pink.sql"
+      sh "wget -O pink.sql https://gitlab.com/pin-cong/data/raw/master/pink.sql"
       puts "file downloaded"
     
       push
